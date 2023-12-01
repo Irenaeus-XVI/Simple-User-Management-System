@@ -4,6 +4,7 @@ const router = express.Router();
 
 
 router.post('/signUp', auth.signUp)
+router.post('/signIn', auth.signIn)
 
 
 
