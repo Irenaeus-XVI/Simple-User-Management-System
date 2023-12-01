@@ -29,8 +29,20 @@ const getSpecificUser = handleAsyncError(async (req, res, next) => {
     res.status(200).json({ message: 'success', user })
 })
 
+
+
+const updateUser = handleAsyncError(async (req, res, next) => {
+
+    const { id } = req.params
+    console.log(req.body);
+    const user = await userModel.findByIdAndUpdate(id, req.body)
+    res.status(200).json({ message: 'success', user })
+})
+
+
 export {
     addUser,
     getAllUsers,
-    getSpecificUser
+    getSpecificUser,
+    updateUser
 }
