@@ -7,6 +7,8 @@ const router = express.Router();
 
 
 router.post('/addUser', validation(addUser), protectedRoutes, allowTo('admin'), user.addUser)
+router.get('/getAllUsers', protectedRoutes, allowTo('admin'), user.getAllUsers)
+router.get('/getSpecificUser/:id', protectedRoutes, allowTo('admin'), user.getSpecificUser)
 
 
 
