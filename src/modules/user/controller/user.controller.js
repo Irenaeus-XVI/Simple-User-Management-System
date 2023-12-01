@@ -1,6 +1,6 @@
 import { userModel } from "../../../../database/models/user.model.js";
 import { handleAsyncError } from "../../../utils/handleAsyncError.js";
-
+import { AppError } from '../../../utils/AppError.js'
 
 
 const addUser = handleAsyncError(async (req, res, next) => {
@@ -36,7 +36,8 @@ const updateUser = handleAsyncError(async (req, res, next) => {
     const { id } = req.params
     console.log(req.body);
     const user = await userModel.findByIdAndUpdate(id, req.body)
-    res.status(200).json({ message: 'success', user })
+    !user && next(new AppError('User Is Not Found', 404))
+    user && res.status(200).json({ message: 'success', user })
 })
 
 
@@ -44,7 +45,8 @@ const deleteUser = handleAsyncError(async (req, res, next) => {
 
     const { id } = req.params
     const user = await userModel.findByIdAndDelete(id)
-    res.status(200).json({ message: 'success' })
+    !user && next(new AppError('User Is Not Found', 404))
+    user && res.status(200).json({ message: 'success' })
 })
 
 

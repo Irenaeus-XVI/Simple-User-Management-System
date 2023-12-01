@@ -4,7 +4,7 @@ import Joi from "joi";
 
 const signUpValidation =
     Joi.object({
-        name: Joi.string().min(2).required(),
+        userName: Joi.string().min(2).required(),
         email: Joi.string()
             .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
         password: Joi.string()
