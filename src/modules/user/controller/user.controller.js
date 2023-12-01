@@ -26,7 +26,8 @@ const getSpecificUser = handleAsyncError(async (req, res, next) => {
 
     const { id } = req.params
     const user = await userModel.findById(id)
-    res.status(200).json({ message: 'success', user })
+    !user && next(new AppError('User Is Not Found', 404))
+    user && res.status(200).json({ message: 'success', user })
 })
 
 
