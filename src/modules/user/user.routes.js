@@ -10,6 +10,7 @@ router.post('/addUser', validation(addUser), protectedRoutes, allowTo('admin'), 
 router.get('/getAllUsers', protectedRoutes, allowTo('admin'), user.getAllUsers)
 router.get('/getSpecificUser/:id', protectedRoutes, allowTo('admin'), user.getSpecificUser)
 router.put('/updateUser/:id', validation(updateUser), protectedRoutes, allowTo('admin'), user.updateUser)
+router.delete('/deleteUser/:id', protectedRoutes, allowTo('admin'), user.deleteUser)
 
 
 

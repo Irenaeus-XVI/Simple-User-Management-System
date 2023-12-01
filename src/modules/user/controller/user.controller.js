@@ -40,9 +40,18 @@ const updateUser = handleAsyncError(async (req, res, next) => {
 })
 
 
+const deleteUser = handleAsyncError(async (req, res, next) => {
+
+    const { id } = req.params
+    const user = await userModel.findByIdAndDelete(id)
+    res.status(200).json({ message: 'success' })
+})
+
+
 export {
     addUser,
     getAllUsers,
     getSpecificUser,
-    updateUser
+    updateUser,
+    deleteUser
 }
