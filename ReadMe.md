@@ -62,27 +62,12 @@ The application follows a typical Node.js and Express architecture with MongoDB 
 5. **API Endpoints:**
    - Access the API endpoints at `http://localhost:3000/api/v1/auth` for authentication and `http://localhost:3000/api/v1/user` for user management.
 
-6. **Testing:**
-   - You can use tools like Postman or `curl` to test the various API endpoints.
-   - Refer to the validation schema in the `auth.validation.js` and `user.validation.js` files for expected request payloads.
+6. **Testing and API Documentation:**
+   - Explore and test the API using Postman. Refer to the [Postman Documentation](https://documenter.getpostman.com/view/27083413/2s9YeK39Wr) for detailed information on available endpoints, request payloads, and responses.
 
-## API Endpoints:
-
-- **Authentication:**
-  - `POST /api/v1/auth/signUp` - User registration
-  - `POST /api/v1/auth/signIn` - User login
-
-- **User Management:**
-  - `POST /api/v1/user/addUser` - Create a new user (admin only)
-  - `GET /api/v1/user/getAllUsers` - Get all users (admin only)
-  - `GET /api/v1/user/getSpecificUser/:id` - Get specific user by ID (admin only)
-  - `PUT /api/v1/user/updateUser/:id` - Update user by ID (admin only)
-  - `DELETE /api/v1/user/deleteUser/:id` - Delete user by ID (admin only)
-
-## Additional Notes:
-
-- The application assumes that you have Node.js, npm, and MongoDB installed on your machine.
-- Make sure to replace `"your-secret-key"` in the `.env` file with a secure secret key for JWT token generation.
-- This documentation provides a basic setup; in a production environment, additional security measures and optimizations may be required.
+7. **Additional Notes:**
+   - The application assumes that you have Node.js, npm, and MongoDB installed on your machine.
+   - Make sure to replace `"your-secret-key"` in the `.env` file with a secure secret key for JWT token generation.
+   - This documentation provides a basic setup; in a production environment, additional security measures and optimizations may be required.
 
 Feel free to customize the documentation based on your specific requirements or add more details as needed.
