@@ -37,8 +37,6 @@ const protectedRoutes = handleAsyncError(async (req, res, next) => {
     const decoded = jwt.verify(token, process.env.SECRET_KEY_TOKEN)
     const user = await userModel.findById(decoded.id)
     if (!user) return next(new AppError('Invalid Token'), 401)
-    const changedPasswordAt = parseInt(user.changeUserPasswordAt.getTime() / 1000)
-    if (changedPasswordAt > decoded.iat) return next(new AppError('Invalid Token'), 401)
     req.user = user
     next()
 })
@@ -47,7 +45,6 @@ const protectedRoutes = handleAsyncError(async (req, res, next) => {
 
 const allowTo = (...roles) => {
     return handleAsyncError(async (req, res, next) => {
-
         if (!roles.includes(req.user.role)) return next(new AppError('You Are Not Allowed', 403))
         next()
     })
